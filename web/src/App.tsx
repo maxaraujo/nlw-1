@@ -1,26 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Routes from './routes';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes />
   );
 }
 
 export default App;
+
+
+//JSX: Sintaxe de XML dentro do JavaScript
+//TSX: É o Typescript com JSX
+//Estados são informações mantidas pelo próprio componente
+/* useState(valorInicial) -> [valor do estado, função pra atualizar o valor do estado]
+** Não é possível alterar o valor do estado sem a função. É feito dessa forma porque 
+** assim o react consegue garantir certa performance através da imutabilidade.
+*/

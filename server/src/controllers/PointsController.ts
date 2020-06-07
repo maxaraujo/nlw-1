@@ -5,25 +5,27 @@ class PointsController {
   
   async crate (request: Request, response: Response){
     const {
-      name,
+      city,
       email,
-      whatsapp,
+      items,
       latitude,
       longitude,
+      name,
       uf,
-      items
+      whatsapp
     } = request.body;
   
     const trx = await knex.transaction();
 
     const point = {
-      image: 'image-fake',
-      name,
+      city,
       email,
-      whatsapp,
+      image: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=80',
       latitude,
       longitude,
-      uf
+      name,
+      uf,
+      whatsapp
     }
   
     const insertedIds = await trx('point').insert(point)
