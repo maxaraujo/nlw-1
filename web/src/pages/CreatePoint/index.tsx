@@ -12,24 +12,21 @@ interface Item {
   title: string,
   image_url: string
 }
-
 interface IBGE_UFResponse {
   id: number,
   nome: string,
   sigla: string 
 }
-
 interface IBGE_CityResponse {
   id: number,
   nome: string,
 }
-
 const CreatePoint = () => {
   const [items, setItems] = useState<Item[]>([]);
   const [ufs, setUFs ] = useState<IBGE_UFResponse[]>([]);
   const [cities, setCities] = useState<IBGE_CityResponse[]>([]);
   const [selectedUf, setSelectUf] = useState('0');
-  //const [selectedCity, setSelectedCity ] = useState('0');
+  const [selectedCity, setSelectCity] = useState('0');
 
   useEffect(() => {
     api.get('items').then(response => {
@@ -59,6 +56,10 @@ const CreatePoint = () => {
   function handleSelectedUf(event: ChangeEvent<HTMLSelectElement>){
     const uf = event.target.value;
     setSelectUf(uf);
+  }
+  function handleSelectedCity(event: ChangeEvent<HTMLSelectElement>){
+    const city = event.target.value;
+    setSelectCity(city);
   }
 
   return (
@@ -125,7 +126,12 @@ const CreatePoint = () => {
           <div className="field-group">
             <div className="field">
               <label htmlFor="uf">Estado</label>
-              <select onChange={handleSelectedUf} value={selectedUf} name="uf" id="uf">
+              <select 
+                id="uf"
+                name="uf" 
+                onChange={handleSelectedUf} 
+                value={selectedUf} 
+              >
                 <option value="0">Selecione um estado</option>
                 {ufs.map( uf =>(
                   <option key={uf.id} value={uf.sigla}>{uf.nome}</option>
@@ -135,7 +141,12 @@ const CreatePoint = () => {
 
             <div className="field">
               <label htmlFor="city">Cidade</label>
-              <select name="city" id="city">
+              <select 
+                id="city"
+                name="city"
+                onChange={handleSelectedCity}
+                value={selectedCity} 
+              >
                 <option value="0">Selecione uma cidade</option>
                 {cities.map( city =>(
                   <option key={city.id} value={city.id}>{city.nome}</option>
