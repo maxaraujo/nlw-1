@@ -1,2 +1,3 @@
 # nlw-1
 Next Level Week 1
+![alt text](Arquitetura_do_projeto_Next_Level Week1.png "Arquitetura do projeto")
