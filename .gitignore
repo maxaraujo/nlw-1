@@ -1,3 +1,4 @@
 node_modules/
 *.sqlite
 *.zip
+server/src/database/database.sqlite-journal
