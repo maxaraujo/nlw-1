@@ -15,7 +15,7 @@ const itemController = new ItemsController();
 routes.get('/items',itemController.index);
 
 routes.post('/points', pointController.crate);
-routes.post('/points', pointController.index);
+routes.get('/points', pointController.index);
 routes.get('/points/:id', pointController.show);
 
 export default routes;

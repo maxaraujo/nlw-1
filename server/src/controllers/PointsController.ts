@@ -52,12 +52,12 @@ class PointsController {
   async index(request: Request, response: Response){
     const { uf, items } = request.query;
     const parseItems = String(items).split(',').map(item => Number(item.trim()));
-    const points = await knex('points')
-      .join('point_items', 'points.id', '=', 'point_items.point_id')
+    const points = await knex('point')
+      .join('point_items', 'point.id', '=', 'point_items.point_id')
       .whereIn('point_items.item_id', parseItems)
       .where('uf', String(uf))
       .distinct()
-      .select('points.*');
+      .select('point.*');
 
     return response.json(points);
   }
