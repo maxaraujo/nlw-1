@@ -1,5 +1,5 @@
 import React, { useEffect, useState, ChangeEvent, FormEvent } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import './styles.css';
 import logo from '../../assets/logo.svg';
 import { FiArrowLeft } from 'react-icons/fi';
@@ -36,6 +36,7 @@ const CreatePoint = () => {
     whatsapp: '',
   })
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
+  const history = useHistory();
 
   useEffect(() => {
     api.get('items').then(response => {
@@ -117,7 +118,7 @@ const CreatePoint = () => {
     };
     
     await api.post('points', data);
-    console.log(JSON.stringify(data));
+    history.push('/');
   }
 
   return (
