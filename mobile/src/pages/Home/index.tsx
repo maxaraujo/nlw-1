@@ -1,10 +1,12 @@
 import React from 'react';
 import { AppLoading } from 'expo';
-import { View, Image, StyleSheet, Text } from 'react-native';
+import { View, ImageBackground, Image, StyleSheet, Text } from 'react-native';
 import { Roboto_400Regular, Roboto_500Medium } from '@expo-google-fonts/roboto';
 import { Ubuntu_700Bold, useFonts } from '@expo-google-fonts/ubuntu';
+import { RectButton } from 'react-native-gesture-handler';
+import { Feather as Icon } from '@expo/vector-icons';
 const logo = require('../../assets/logo.png');
-
+const background = require('../../assets/home-background.png');
 
 const Home = () => {
   const [fontsLoaded] = useFonts({
@@ -16,13 +18,27 @@ const Home = () => {
     return <AppLoading />;
 
   return (
-    <View style={ styles.container }>
+    <ImageBackground 
+      source={background} 
+      style={ styles.container }
+      imageStyle={{width: 274, height: 368}}  
+    >
       <View style={ styles.main }>
         <Image source={logo} />
         <Text style={styles.title}>Seu marketplace de coleta de resíduos</Text>
         <Text style={styles.description}>Ajudamos pessoas a encontra pontos de coleta de forma eficiênte.</Text>
       </View>
-    </View>
+      <View style={styles.footer}>
+        <RectButton  style={styles.button} onPress={() => {}}>
+          <View style={styles.buttonIcon}>
+          <Icon name="arrow-right" color="#FFF" size={24} />
+          </View>
+          <Text style={styles.buttonText}>
+            Entrar
+          </Text>
+        </RectButton>
+      </View>
+    </ImageBackground>
   )
 };
 
