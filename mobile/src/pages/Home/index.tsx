@@ -5,10 +5,15 @@ import { Roboto_400Regular, Roboto_500Medium } from '@expo-google-fonts/roboto';
 import { Ubuntu_700Bold, useFonts } from '@expo-google-fonts/ubuntu';
 import { RectButton } from 'react-native-gesture-handler';
 import { Feather as Icon } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 const logo = require('../../assets/logo.png');
 const background = require('../../assets/home-background.png');
 
 const Home = () => {
+  const navigation = useNavigation();
+  function handleNavigateToPoints(){
+    navigation.navigate('Points');
+  }
   const [fontsLoaded] = useFonts({
     Roboto_400Regular,
     Roboto_500Medium,
@@ -29,7 +34,7 @@ const Home = () => {
         <Text style={styles.description}>Ajudamos pessoas a encontra pontos de coleta de forma eficiênte.</Text>
       </View>
       <View style={styles.footer}>
-        <RectButton  style={styles.button} onPress={() => {}}>
+        <RectButton  style={styles.button} onPress={handleNavigateToPoints}>
           <View style={styles.buttonIcon}>
           <Icon name="arrow-right" color="#FFF" size={24} />
           </View>
@@ -45,8 +50,7 @@ const Home = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 32,
-    backgroundColor: '#f0f0f5'
+    padding: 32
   },
 
   main: {
